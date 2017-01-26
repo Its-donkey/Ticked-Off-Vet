@@ -1,8 +1,6 @@
 ﻿
 Public Class frmMainFrame
 
-    Public currentlyOpenedForm As Form
-
     Private Sub frmMainFrame_Load(sender As Object, e As EventArgs) Handles Me.Load
         currentlyOpenedForm = frmMenu
         OpenForm(frmMenu)
@@ -28,7 +26,15 @@ Public Class frmMainFrame
         OpenForm(frmMenu)
     End Sub
 
-    Private Sub ShowAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowAllToolStripMenuItem.Click
+    Private Sub mnuTopBarCustomersShowAll_Click(sender As Object, e As EventArgs) Handles mnuTopBarCustomersShowAll.Click
         OpenCustomersForm(1)
+    End Sub
+
+    Private Sub mnuTopBarPetsUpdate_Click(sender As Object, e As EventArgs) Handles mnuTopBarPetsUpdate.Click
+        OpenPetsForm(0)
+    End Sub
+
+    Private Sub mnuTopBarPetsShowAll_Click(sender As Object, e As EventArgs) Handles mnuTopBarPetsShowAll.Click
+        OpenPetsForm(1)
     End Sub
 End Class

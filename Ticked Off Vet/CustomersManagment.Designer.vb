@@ -56,7 +56,7 @@ Partial Class frmCustomerManagement
         Me.EmailTextBox = New System.Windows.Forms.TextBox()
         Me.Phone1TextBox = New System.Windows.Forms.TextBox()
         Me.tabPetDetails = New System.Windows.Forms.TabPage()
-        Me.PetListBox = New System.Windows.Forms.ListBox()
+        Me.lstPetsOwned = New System.Windows.Forms.ListBox()
         Me.PetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.bndCustomers = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.bndCustomersAddNewItem = New System.Windows.Forms.ToolStripButton()
@@ -403,7 +403,7 @@ Partial Class frmCustomerManagement
         'tabPetDetails
         '
         Me.tabPetDetails.AutoScroll = True
-        Me.tabPetDetails.Controls.Add(Me.PetListBox)
+        Me.tabPetDetails.Controls.Add(Me.lstPetsOwned)
         Me.tabPetDetails.Location = New System.Drawing.Point(4, 22)
         Me.tabPetDetails.Name = "tabPetDetails"
         Me.tabPetDetails.Padding = New System.Windows.Forms.Padding(3)
@@ -412,16 +412,16 @@ Partial Class frmCustomerManagement
         Me.tabPetDetails.Text = "Pet Details"
         Me.tabPetDetails.UseVisualStyleBackColor = True
         '
-        'PetListBox
+        'lstPetsOwned
         '
-        Me.PetListBox.DataSource = Me.PetBindingSource
-        Me.PetListBox.DisplayMember = "petName"
-        Me.PetListBox.FormattingEnabled = True
-        Me.PetListBox.Location = New System.Drawing.Point(96, 6)
-        Me.PetListBox.Name = "PetListBox"
-        Me.PetListBox.Size = New System.Drawing.Size(300, 212)
-        Me.PetListBox.TabIndex = 0
-        Me.PetListBox.ValueMember = "petID"
+        Me.lstPetsOwned.DataSource = Me.PetBindingSource
+        Me.lstPetsOwned.DisplayMember = "petName"
+        Me.lstPetsOwned.FormattingEnabled = True
+        Me.lstPetsOwned.Location = New System.Drawing.Point(96, 6)
+        Me.lstPetsOwned.Name = "lstPetsOwned"
+        Me.lstPetsOwned.Size = New System.Drawing.Size(300, 212)
+        Me.lstPetsOwned.TabIndex = 0
+        Me.lstPetsOwned.ValueMember = "petID"
         '
         'PetBindingSource
         '
@@ -498,6 +498,7 @@ Partial Class frmCustomerManagement
         '
         Me.bndCustomersPositionItem.AccessibleName = "Position"
         Me.bndCustomersPositionItem.AutoSize = False
+        Me.bndCustomersPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.bndCustomersPositionItem.Name = "bndCustomersPositionItem"
         Me.bndCustomersPositionItem.Size = New System.Drawing.Size(50, 23)
         Me.bndCustomersPositionItem.Text = "0"
@@ -731,6 +732,6 @@ Partial Class frmCustomerManagement
     Friend WithEvents tabPetDetails As TabPage
     Friend WithEvents PetTableAdapter As tickedoffDataSetTableAdapters.petTableAdapter
     Friend WithEvents CustomerComboBox As ComboBox
-    Friend WithEvents PetListBox As ListBox
+    Friend WithEvents lstPetsOwned As ListBox
     Friend WithEvents PetBindingSource As BindingSource
 End Class

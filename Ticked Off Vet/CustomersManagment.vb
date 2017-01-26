@@ -30,7 +30,7 @@
 
         OpenCustomersForm(0)
         tabCustomerInformation.SelectedIndex = 0
-        CustomerBindingSource.DataMember.IndexOf(selectedCell)
+        CustomerBindingSource.IndexOf(selectedCell)
     End Sub
 
     Private Sub DisplayNameToolStripButton_Click(sender As Object, e As EventArgs)
@@ -43,4 +43,10 @@
     End Sub
 
 
+    Private Sub lstPetsOwned_DoubleClick(sender As Object, e As EventArgs) Handles lstPetsOwned.DoubleClick
+
+        Dim selectedPet As String = lstPetsOwned.SelectedValue
+        OpenPetsForm(0)
+        frmPetManagement.PetBindingSource.Position = frmPetManagement.PetBindingSource.Find("petID", selectedPet)
+    End Sub
 End Class

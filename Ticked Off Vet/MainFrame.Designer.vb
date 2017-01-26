@@ -22,20 +22,21 @@ Partial Class frmMainFrame
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainFrame))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.mnuTopBar = New System.Windows.Forms.MenuStrip()
         Me.mnuTopBarFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTopBarFileExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTopBarCustomers = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTopBarCustomersUpdate = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuTopBarCustomersShowAll = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PetsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuTopBarPetsUpdate = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuTopBarPetsShowAll = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTopBarHelp = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTopBarHelpAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblPageName = New System.Windows.Forms.Label()
         Me.picLogo = New System.Windows.Forms.PictureBox()
-        Me.ShowAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PetsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.mnuTopBar.SuspendLayout()
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,13 +79,13 @@ Partial Class frmMainFrame
         Me.mnuTopBarFileExit.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mnuTopBarFileExit.Name = "mnuTopBarFileExit"
         Me.mnuTopBarFileExit.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.mnuTopBarFileExit.Size = New System.Drawing.Size(152, 22)
+        Me.mnuTopBarFileExit.Size = New System.Drawing.Size(144, 22)
         Me.mnuTopBarFileExit.Text = "E&xit"
         '
         'mnuTopBarCustomers
         '
         Me.mnuTopBarCustomers.DropDownDirection = Global.Ticked_Off_Vet.My.MySettings.Default.DropDownDirection
-        Me.mnuTopBarCustomers.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTopBarCustomersUpdate, Me.ShowAllToolStripMenuItem})
+        Me.mnuTopBarCustomers.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTopBarCustomersUpdate, Me.mnuTopBarCustomersShowAll})
         Me.mnuTopBarCustomers.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mnuTopBarCustomers.ForeColor = System.Drawing.Color.FromArgb(CType(CType(140, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.mnuTopBarCustomers.Name = "mnuTopBarCustomers"
@@ -95,8 +96,39 @@ Partial Class frmMainFrame
         '
         Me.mnuTopBarCustomersUpdate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mnuTopBarCustomersUpdate.Name = "mnuTopBarCustomersUpdate"
-        Me.mnuTopBarCustomersUpdate.Size = New System.Drawing.Size(152, 22)
+        Me.mnuTopBarCustomersUpdate.Size = New System.Drawing.Size(127, 22)
         Me.mnuTopBarCustomersUpdate.Text = "&Update"
+        '
+        'mnuTopBarCustomersShowAll
+        '
+        Me.mnuTopBarCustomersShowAll.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuTopBarCustomersShowAll.Name = "mnuTopBarCustomersShowAll"
+        Me.mnuTopBarCustomersShowAll.Size = New System.Drawing.Size(127, 22)
+        Me.mnuTopBarCustomersShowAll.Text = "&Show All"
+        '
+        'PetsToolStripMenuItem
+        '
+        Me.PetsToolStripMenuItem.DropDownDirection = Global.Ticked_Off_Vet.My.MySettings.Default.DropDownDirection
+        Me.PetsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTopBarPetsUpdate, Me.mnuTopBarPetsShowAll})
+        Me.PetsToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PetsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(140, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.PetsToolStripMenuItem.Name = "PetsToolStripMenuItem"
+        Me.PetsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.PetsToolStripMenuItem.Text = "&Pets"
+        '
+        'mnuTopBarPetsUpdate
+        '
+        Me.mnuTopBarPetsUpdate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuTopBarPetsUpdate.Name = "mnuTopBarPetsUpdate"
+        Me.mnuTopBarPetsUpdate.Size = New System.Drawing.Size(152, 22)
+        Me.mnuTopBarPetsUpdate.Text = "&Update"
+        '
+        'mnuTopBarPetsShowAll
+        '
+        Me.mnuTopBarPetsShowAll.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuTopBarPetsShowAll.Name = "mnuTopBarPetsShowAll"
+        Me.mnuTopBarPetsShowAll.Size = New System.Drawing.Size(152, 22)
+        Me.mnuTopBarPetsShowAll.Text = "&Show All"
         '
         'mnuTopBarHelp
         '
@@ -136,37 +168,6 @@ Partial Class frmMainFrame
         Me.picLogo.TabIndex = 1
         Me.picLogo.TabStop = False
         '
-        'ShowAllToolStripMenuItem
-        '
-        Me.ShowAllToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ShowAllToolStripMenuItem.Name = "ShowAllToolStripMenuItem"
-        Me.ShowAllToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ShowAllToolStripMenuItem.Text = "&Show All"
-        '
-        'PetsToolStripMenuItem
-        '
-        Me.PetsToolStripMenuItem.DropDownDirection = Global.Ticked_Off_Vet.My.MySettings.Default.DropDownDirection
-        Me.PetsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateToolStripMenuItem, Me.ShowAllToolStripMenuItem1})
-        Me.PetsToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PetsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(140, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PetsToolStripMenuItem.Name = "PetsToolStripMenuItem"
-        Me.PetsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
-        Me.PetsToolStripMenuItem.Text = "&Pets"
-        '
-        'UpdateToolStripMenuItem
-        '
-        Me.UpdateToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.UpdateToolStripMenuItem.Text = "&Update"
-        '
-        'ShowAllToolStripMenuItem1
-        '
-        Me.ShowAllToolStripMenuItem1.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ShowAllToolStripMenuItem1.Name = "ShowAllToolStripMenuItem1"
-        Me.ShowAllToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
-        Me.ShowAllToolStripMenuItem1.Text = "&Show All"
-        '
         'frmMainFrame
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -175,6 +176,7 @@ Partial Class frmMainFrame
         Me.ClientSize = New System.Drawing.Size(534, 511)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.Name = "frmMainFrame"
         Me.Text = "Ticked Off Vet Clinic"
@@ -197,8 +199,8 @@ Partial Class frmMainFrame
     Friend WithEvents mnuTopBarCustomersUpdate As ToolStripMenuItem
     Friend WithEvents mnuTopBarHelp As ToolStripMenuItem
     Friend WithEvents mnuTopBarHelpAbout As ToolStripMenuItem
-    Friend WithEvents ShowAllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuTopBarCustomersShowAll As ToolStripMenuItem
     Friend WithEvents PetsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ShowAllToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents mnuTopBarPetsUpdate As ToolStripMenuItem
+    Friend WithEvents mnuTopBarPetsShowAll As ToolStripMenuItem
 End Class

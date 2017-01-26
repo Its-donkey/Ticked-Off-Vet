@@ -23,7 +23,7 @@ Partial Class frmMenu
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.btnCustomers = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnOpenPets = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnCustomers
@@ -35,14 +35,14 @@ Partial Class frmMenu
         Me.btnCustomers.Text = "Customers"
         Me.btnCustomers.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnOpenPets
         '
-        Me.Button2.Location = New System.Drawing.Point(192, 41)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnOpenPets.Location = New System.Drawing.Point(192, 41)
+        Me.btnOpenPets.Name = "btnOpenPets"
+        Me.btnOpenPets.Size = New System.Drawing.Size(75, 23)
+        Me.btnOpenPets.TabIndex = 1
+        Me.btnOpenPets.Text = "Pets"
+        Me.btnOpenPets.UseVisualStyleBackColor = True
         '
         'frmMenu
         '
@@ -50,7 +50,7 @@ Partial Class frmMenu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(459, 511)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnOpenPets)
         Me.Controls.Add(Me.btnCustomers)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMenu"
@@ -60,5 +60,5 @@ Partial Class frmMenu
     End Sub
 
     Friend WithEvents btnCustomers As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnOpenPets As Button
 End Class

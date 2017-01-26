@@ -1,4 +1,7 @@
 ﻿Module functions
+
+    Public currentlyOpenedForm As Form
+
     Sub OpenForm(ByVal formName As Form)
         CloseForms()
         'Set the Parent Form of the Child window.
@@ -21,8 +24,8 @@
     End Sub
 
     Sub OpenCustomersForm(ByVal tabIndex As Integer)
-        If frmMainFrame.currentlyOpenedForm IsNot frmCustomerManagement Then
-            frmMainFrame.currentlyOpenedForm = frmCustomerManagement
+        If currentlyOpenedForm IsNot frmCustomerManagement Then
+            currentlyOpenedForm = frmCustomerManagement
             OpenForm(frmCustomerManagement)
         End If
 
@@ -30,11 +33,12 @@
     End Sub
 
     Sub OpenPetsForm(ByVal tabIndex As Integer)
-        If frmMainFrame.currentlyOpenedForm IsNot frmPetManagement Then
-            frmMainFrame.currentlyOpenedForm = frmPetManagement
+        If currentlyOpenedForm IsNot frmPetManagement Then
+            currentlyOpenedForm = frmPetManagement
             OpenForm(frmPetManagement)
         End If
 
         frmPetManagement.tabPetRecords.SelectedIndex = tabIndex
+
     End Sub
 End Module

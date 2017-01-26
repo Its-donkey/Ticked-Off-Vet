@@ -3,7 +3,7 @@
         OpenCustomersForm(0)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        OpenPetsForm(1)
+    Private Sub btnOpenPets_Click(sender As Object, e As EventArgs) Handles btnOpenPets.Click
+        OpenPetsForm(0)
     End Sub
 End Class

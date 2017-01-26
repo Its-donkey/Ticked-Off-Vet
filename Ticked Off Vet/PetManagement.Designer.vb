@@ -23,19 +23,28 @@ Partial Class frmPetManagement
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim PetIDLabel As System.Windows.Forms.Label
+        Dim OwnerLabel As System.Windows.Forms.Label
         Dim PetNameLabel As System.Windows.Forms.Label
         Dim SpeciesLabel As System.Windows.Forms.Label
         Dim BreedLabel As System.Windows.Forms.Label
         Dim DOBLabel As System.Windows.Forms.Label
         Dim GenderLabel As System.Windows.Forms.Label
         Dim WeightLabel As System.Windows.Forms.Label
-        Dim CustomerIDLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPetManagement))
-        Dim OwnerLabel As System.Windows.Forms.Label
-        Dim DisplayLabel As System.Windows.Forms.Label
         Me.tabPetRecords = New System.Windows.Forms.TabControl()
         Me.tabPetRecord = New System.Windows.Forms.TabPage()
+        Me.tabPetInformation = New System.Windows.Forms.TabControl()
+        Me.tabPetDetails = New System.Windows.Forms.TabPage()
+        Me.OwnerTextBox = New System.Windows.Forms.TextBox()
+        Me.PetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TickedoffDataSet = New Ticked_Off_Vet.tickedoffDataSet()
+        Me.PetNameTextBox = New System.Windows.Forms.TextBox()
+        Me.SpeciesTextBox = New System.Windows.Forms.TextBox()
+        Me.BreedTextBox = New System.Windows.Forms.TextBox()
+        Me.DOBDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.GenderTextBox = New System.Windows.Forms.TextBox()
+        Me.WeightTextBox = New System.Windows.Forms.TextBox()
+        Me.DisplayComboBox = New System.Windows.Forms.ComboBox()
         Me.PetBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -49,20 +58,9 @@ Partial Class frmPetManagement
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.PetBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.PetIDTextBox = New System.Windows.Forms.TextBox()
-        Me.PetNameTextBox = New System.Windows.Forms.TextBox()
-        Me.SpeciesTextBox = New System.Windows.Forms.TextBox()
-        Me.BreedTextBox = New System.Windows.Forms.TextBox()
-        Me.DOBDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.GenderTextBox = New System.Windows.Forms.TextBox()
-        Me.WeightTextBox = New System.Windows.Forms.TextBox()
-        Me.CustomerIDTextBox = New System.Windows.Forms.TextBox()
         Me.tabAllPets = New System.Windows.Forms.TabPage()
         Me.pnlViewAllPets = New System.Windows.Forms.Panel()
-        Me.PetDataGridView = New System.Windows.Forms.DataGridView()
-        Me.OwnerTextBox = New System.Windows.Forms.TextBox()
-        Me.PetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TickedoffDataSet = New Ticked_Off_Vet.tickedoffDataSet()
+        Me.dgdViewAllPets = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -73,99 +71,88 @@ Partial Class frmPetManagement
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PetTableAdapter = New Ticked_Off_Vet.tickedoffDataSetTableAdapters.petTableAdapter()
         Me.TableAdapterManager = New Ticked_Off_Vet.tickedoffDataSetTableAdapters.TableAdapterManager()
-        Me.DisplayComboBox = New System.Windows.Forms.ComboBox()
-        PetIDLabel = New System.Windows.Forms.Label()
+        OwnerLabel = New System.Windows.Forms.Label()
         PetNameLabel = New System.Windows.Forms.Label()
         SpeciesLabel = New System.Windows.Forms.Label()
         BreedLabel = New System.Windows.Forms.Label()
         DOBLabel = New System.Windows.Forms.Label()
         GenderLabel = New System.Windows.Forms.Label()
         WeightLabel = New System.Windows.Forms.Label()
-        CustomerIDLabel = New System.Windows.Forms.Label()
-        OwnerLabel = New System.Windows.Forms.Label()
-        DisplayLabel = New System.Windows.Forms.Label()
         Me.tabPetRecords.SuspendLayout()
         Me.tabPetRecord.SuspendLayout()
+        Me.tabPetInformation.SuspendLayout()
+        Me.tabPetDetails.SuspendLayout()
+        CType(Me.PetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TickedoffDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PetBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PetBindingNavigator.SuspendLayout()
         Me.tabAllPets.SuspendLayout()
         Me.pnlViewAllPets.SuspendLayout()
-        CType(Me.PetDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TickedoffDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgdViewAllPets, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'PetIDLabel
+        'OwnerLabel
         '
-        PetIDLabel.AutoSize = True
-        PetIDLabel.Location = New System.Drawing.Point(92, 34)
-        PetIDLabel.Name = "PetIDLabel"
-        PetIDLabel.Size = New System.Drawing.Size(39, 13)
-        PetIDLabel.TabIndex = 0
-        PetIDLabel.Text = "pet ID:"
+        OwnerLabel.AutoSize = True
+        OwnerLabel.Location = New System.Drawing.Point(91, 165)
+        OwnerLabel.Name = "OwnerLabel"
+        OwnerLabel.Size = New System.Drawing.Size(39, 13)
+        OwnerLabel.TabIndex = 31
+        OwnerLabel.Text = "owner:"
         '
         'PetNameLabel
         '
         PetNameLabel.AutoSize = True
-        PetNameLabel.Location = New System.Drawing.Point(92, 60)
+        PetNameLabel.Location = New System.Drawing.Point(91, 9)
         PetNameLabel.Name = "PetNameLabel"
         PetNameLabel.Size = New System.Drawing.Size(56, 13)
-        PetNameLabel.TabIndex = 2
+        PetNameLabel.TabIndex = 19
         PetNameLabel.Text = "pet Name:"
         '
         'SpeciesLabel
         '
         SpeciesLabel.AutoSize = True
-        SpeciesLabel.Location = New System.Drawing.Point(92, 86)
+        SpeciesLabel.Location = New System.Drawing.Point(91, 35)
         SpeciesLabel.Name = "SpeciesLabel"
         SpeciesLabel.Size = New System.Drawing.Size(46, 13)
-        SpeciesLabel.TabIndex = 4
+        SpeciesLabel.TabIndex = 21
         SpeciesLabel.Text = "species:"
         '
         'BreedLabel
         '
         BreedLabel.AutoSize = True
-        BreedLabel.Location = New System.Drawing.Point(92, 112)
+        BreedLabel.Location = New System.Drawing.Point(91, 61)
         BreedLabel.Name = "BreedLabel"
         BreedLabel.Size = New System.Drawing.Size(37, 13)
-        BreedLabel.TabIndex = 6
+        BreedLabel.TabIndex = 23
         BreedLabel.Text = "breed:"
         '
         'DOBLabel
         '
         DOBLabel.AutoSize = True
-        DOBLabel.Location = New System.Drawing.Point(92, 139)
+        DOBLabel.Location = New System.Drawing.Point(91, 88)
         DOBLabel.Name = "DOBLabel"
         DOBLabel.Size = New System.Drawing.Size(33, 13)
-        DOBLabel.TabIndex = 8
+        DOBLabel.TabIndex = 25
         DOBLabel.Text = "DOB:"
         '
         'GenderLabel
         '
         GenderLabel.AutoSize = True
-        GenderLabel.Location = New System.Drawing.Point(92, 164)
+        GenderLabel.Location = New System.Drawing.Point(91, 113)
         GenderLabel.Name = "GenderLabel"
         GenderLabel.Size = New System.Drawing.Size(43, 13)
-        GenderLabel.TabIndex = 10
+        GenderLabel.TabIndex = 27
         GenderLabel.Text = "gender:"
         '
         'WeightLabel
         '
         WeightLabel.AutoSize = True
-        WeightLabel.Location = New System.Drawing.Point(92, 190)
+        WeightLabel.Location = New System.Drawing.Point(91, 139)
         WeightLabel.Name = "WeightLabel"
         WeightLabel.Size = New System.Drawing.Size(41, 13)
-        WeightLabel.TabIndex = 12
+        WeightLabel.TabIndex = 29
         WeightLabel.Text = "weight:"
-        '
-        'CustomerIDLabel
-        '
-        CustomerIDLabel.AutoSize = True
-        CustomerIDLabel.Location = New System.Drawing.Point(92, 216)
-        CustomerIDLabel.Name = "CustomerIDLabel"
-        CustomerIDLabel.Size = New System.Drawing.Size(67, 13)
-        CustomerIDLabel.TabIndex = 14
-        CustomerIDLabel.Text = "customer ID:"
         '
         'tabPetRecords
         '
@@ -175,40 +162,135 @@ Partial Class frmPetManagement
         Me.tabPetRecords.Location = New System.Drawing.Point(0, 0)
         Me.tabPetRecords.Name = "tabPetRecords"
         Me.tabPetRecords.SelectedIndex = 0
-        Me.tabPetRecords.Size = New System.Drawing.Size(484, 511)
+        Me.tabPetRecords.Size = New System.Drawing.Size(500, 550)
         Me.tabPetRecords.TabIndex = 0
         '
         'tabPetRecord
         '
         Me.tabPetRecord.AutoScroll = True
-        Me.tabPetRecord.Controls.Add(DisplayLabel)
+        Me.tabPetRecord.Controls.Add(Me.tabPetInformation)
         Me.tabPetRecord.Controls.Add(Me.DisplayComboBox)
-        Me.tabPetRecord.Controls.Add(OwnerLabel)
-        Me.tabPetRecord.Controls.Add(Me.OwnerTextBox)
         Me.tabPetRecord.Controls.Add(Me.PetBindingNavigator)
-        Me.tabPetRecord.Controls.Add(PetIDLabel)
-        Me.tabPetRecord.Controls.Add(Me.PetIDTextBox)
-        Me.tabPetRecord.Controls.Add(PetNameLabel)
-        Me.tabPetRecord.Controls.Add(Me.PetNameTextBox)
-        Me.tabPetRecord.Controls.Add(SpeciesLabel)
-        Me.tabPetRecord.Controls.Add(Me.SpeciesTextBox)
-        Me.tabPetRecord.Controls.Add(BreedLabel)
-        Me.tabPetRecord.Controls.Add(Me.BreedTextBox)
-        Me.tabPetRecord.Controls.Add(DOBLabel)
-        Me.tabPetRecord.Controls.Add(Me.DOBDateTimePicker)
-        Me.tabPetRecord.Controls.Add(GenderLabel)
-        Me.tabPetRecord.Controls.Add(Me.GenderTextBox)
-        Me.tabPetRecord.Controls.Add(WeightLabel)
-        Me.tabPetRecord.Controls.Add(Me.WeightTextBox)
-        Me.tabPetRecord.Controls.Add(CustomerIDLabel)
-        Me.tabPetRecord.Controls.Add(Me.CustomerIDTextBox)
         Me.tabPetRecord.Location = New System.Drawing.Point(4, 22)
         Me.tabPetRecord.Name = "tabPetRecord"
         Me.tabPetRecord.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPetRecord.Size = New System.Drawing.Size(476, 485)
+        Me.tabPetRecord.Size = New System.Drawing.Size(492, 524)
         Me.tabPetRecord.TabIndex = 0
         Me.tabPetRecord.Text = "Pet Record"
         Me.tabPetRecord.UseVisualStyleBackColor = True
+        '
+        'tabPetInformation
+        '
+        Me.tabPetInformation.Controls.Add(Me.tabPetDetails)
+        Me.tabPetInformation.Location = New System.Drawing.Point(-4, 59)
+        Me.tabPetInformation.Name = "tabPetInformation"
+        Me.tabPetInformation.SelectedIndex = 0
+        Me.tabPetInformation.Size = New System.Drawing.Size(494, 442)
+        Me.tabPetInformation.TabIndex = 21
+        '
+        'tabPetDetails
+        '
+        Me.tabPetDetails.Controls.Add(OwnerLabel)
+        Me.tabPetDetails.Controls.Add(Me.OwnerTextBox)
+        Me.tabPetDetails.Controls.Add(PetNameLabel)
+        Me.tabPetDetails.Controls.Add(Me.PetNameTextBox)
+        Me.tabPetDetails.Controls.Add(SpeciesLabel)
+        Me.tabPetDetails.Controls.Add(Me.SpeciesTextBox)
+        Me.tabPetDetails.Controls.Add(BreedLabel)
+        Me.tabPetDetails.Controls.Add(Me.BreedTextBox)
+        Me.tabPetDetails.Controls.Add(DOBLabel)
+        Me.tabPetDetails.Controls.Add(Me.DOBDateTimePicker)
+        Me.tabPetDetails.Controls.Add(GenderLabel)
+        Me.tabPetDetails.Controls.Add(Me.GenderTextBox)
+        Me.tabPetDetails.Controls.Add(WeightLabel)
+        Me.tabPetDetails.Controls.Add(Me.WeightTextBox)
+        Me.tabPetDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tabPetDetails.Name = "tabPetDetails"
+        Me.tabPetDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPetDetails.Size = New System.Drawing.Size(486, 416)
+        Me.tabPetDetails.TabIndex = 0
+        Me.tabPetDetails.Text = "Pet Details"
+        Me.tabPetDetails.UseVisualStyleBackColor = True
+        '
+        'OwnerTextBox
+        '
+        Me.OwnerTextBox.Cursor = System.Windows.Forms.Cursors.Default
+        Me.OwnerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "owner", True))
+        Me.OwnerTextBox.Location = New System.Drawing.Point(164, 162)
+        Me.OwnerTextBox.Name = "OwnerTextBox"
+        Me.OwnerTextBox.ReadOnly = True
+        Me.OwnerTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.OwnerTextBox.TabIndex = 32
+        '
+        'PetBindingSource
+        '
+        Me.PetBindingSource.DataMember = "pet"
+        Me.PetBindingSource.DataSource = Me.TickedoffDataSet
+        '
+        'TickedoffDataSet
+        '
+        Me.TickedoffDataSet.DataSetName = "tickedoffDataSet"
+        Me.TickedoffDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'PetNameTextBox
+        '
+        Me.PetNameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "petName", True))
+        Me.PetNameTextBox.Location = New System.Drawing.Point(164, 6)
+        Me.PetNameTextBox.Name = "PetNameTextBox"
+        Me.PetNameTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.PetNameTextBox.TabIndex = 20
+        '
+        'SpeciesTextBox
+        '
+        Me.SpeciesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "species", True))
+        Me.SpeciesTextBox.Location = New System.Drawing.Point(164, 32)
+        Me.SpeciesTextBox.Name = "SpeciesTextBox"
+        Me.SpeciesTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.SpeciesTextBox.TabIndex = 22
+        '
+        'BreedTextBox
+        '
+        Me.BreedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "breed", True))
+        Me.BreedTextBox.Location = New System.Drawing.Point(164, 58)
+        Me.BreedTextBox.Name = "BreedTextBox"
+        Me.BreedTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.BreedTextBox.TabIndex = 24
+        '
+        'DOBDateTimePicker
+        '
+        Me.DOBDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PetBindingSource, "DOB", True))
+        Me.DOBDateTimePicker.Location = New System.Drawing.Point(164, 84)
+        Me.DOBDateTimePicker.Name = "DOBDateTimePicker"
+        Me.DOBDateTimePicker.Size = New System.Drawing.Size(200, 20)
+        Me.DOBDateTimePicker.TabIndex = 26
+        '
+        'GenderTextBox
+        '
+        Me.GenderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "gender", True))
+        Me.GenderTextBox.Location = New System.Drawing.Point(164, 110)
+        Me.GenderTextBox.Name = "GenderTextBox"
+        Me.GenderTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.GenderTextBox.TabIndex = 28
+        '
+        'WeightTextBox
+        '
+        Me.WeightTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "weight", True))
+        Me.WeightTextBox.Location = New System.Drawing.Point(164, 136)
+        Me.WeightTextBox.Name = "WeightTextBox"
+        Me.WeightTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.WeightTextBox.TabIndex = 30
+        '
+        'DisplayComboBox
+        '
+        Me.DisplayComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "display", True))
+        Me.DisplayComboBox.DataSource = Me.PetBindingSource
+        Me.DisplayComboBox.DisplayMember = "display"
+        Me.DisplayComboBox.FormattingEnabled = True
+        Me.DisplayComboBox.Location = New System.Drawing.Point(184, 31)
+        Me.DisplayComboBox.Name = "DisplayComboBox"
+        Me.DisplayComboBox.Size = New System.Drawing.Size(300, 21)
+        Me.DisplayComboBox.TabIndex = 20
+        Me.DisplayComboBox.ValueMember = "petID"
         '
         'PetBindingNavigator
         '
@@ -224,7 +306,7 @@ Partial Class frmPetManagement
         Me.PetBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.PetBindingNavigator.Name = "PetBindingNavigator"
         Me.PetBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.PetBindingNavigator.Size = New System.Drawing.Size(470, 25)
+        Me.PetBindingNavigator.Size = New System.Drawing.Size(486, 25)
         Me.PetBindingNavigator.TabIndex = 16
         Me.PetBindingNavigator.Text = "BindingNavigator1"
         '
@@ -321,77 +403,13 @@ Partial Class frmPetManagement
         Me.PetBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
         Me.PetBindingNavigatorSaveItem.Text = "Save Data"
         '
-        'PetIDTextBox
-        '
-        Me.PetIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "petID", True))
-        Me.PetIDTextBox.Location = New System.Drawing.Point(165, 31)
-        Me.PetIDTextBox.Name = "PetIDTextBox"
-        Me.PetIDTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.PetIDTextBox.TabIndex = 1
-        '
-        'PetNameTextBox
-        '
-        Me.PetNameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "petName", True))
-        Me.PetNameTextBox.Location = New System.Drawing.Point(165, 57)
-        Me.PetNameTextBox.Name = "PetNameTextBox"
-        Me.PetNameTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.PetNameTextBox.TabIndex = 3
-        '
-        'SpeciesTextBox
-        '
-        Me.SpeciesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "species", True))
-        Me.SpeciesTextBox.Location = New System.Drawing.Point(165, 83)
-        Me.SpeciesTextBox.Name = "SpeciesTextBox"
-        Me.SpeciesTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.SpeciesTextBox.TabIndex = 5
-        '
-        'BreedTextBox
-        '
-        Me.BreedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "breed", True))
-        Me.BreedTextBox.Location = New System.Drawing.Point(165, 109)
-        Me.BreedTextBox.Name = "BreedTextBox"
-        Me.BreedTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.BreedTextBox.TabIndex = 7
-        '
-        'DOBDateTimePicker
-        '
-        Me.DOBDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PetBindingSource, "DOB", True))
-        Me.DOBDateTimePicker.Location = New System.Drawing.Point(165, 135)
-        Me.DOBDateTimePicker.Name = "DOBDateTimePicker"
-        Me.DOBDateTimePicker.Size = New System.Drawing.Size(200, 20)
-        Me.DOBDateTimePicker.TabIndex = 9
-        '
-        'GenderTextBox
-        '
-        Me.GenderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "gender", True))
-        Me.GenderTextBox.Location = New System.Drawing.Point(165, 161)
-        Me.GenderTextBox.Name = "GenderTextBox"
-        Me.GenderTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.GenderTextBox.TabIndex = 11
-        '
-        'WeightTextBox
-        '
-        Me.WeightTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "weight", True))
-        Me.WeightTextBox.Location = New System.Drawing.Point(165, 187)
-        Me.WeightTextBox.Name = "WeightTextBox"
-        Me.WeightTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.WeightTextBox.TabIndex = 13
-        '
-        'CustomerIDTextBox
-        '
-        Me.CustomerIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "customerID", True))
-        Me.CustomerIDTextBox.Location = New System.Drawing.Point(165, 213)
-        Me.CustomerIDTextBox.Name = "CustomerIDTextBox"
-        Me.CustomerIDTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.CustomerIDTextBox.TabIndex = 15
-        '
         'tabAllPets
         '
         Me.tabAllPets.Controls.Add(Me.pnlViewAllPets)
         Me.tabAllPets.Location = New System.Drawing.Point(4, 22)
         Me.tabAllPets.Name = "tabAllPets"
         Me.tabAllPets.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabAllPets.Size = New System.Drawing.Size(476, 485)
+        Me.tabAllPets.Size = New System.Drawing.Size(492, 524)
         Me.tabAllPets.TabIndex = 1
         Me.tabAllPets.Text = "View All Pets"
         Me.tabAllPets.UseVisualStyleBackColor = True
@@ -399,51 +417,24 @@ Partial Class frmPetManagement
         'pnlViewAllPets
         '
         Me.pnlViewAllPets.AutoScroll = True
-        Me.pnlViewAllPets.Controls.Add(Me.PetDataGridView)
+        Me.pnlViewAllPets.Controls.Add(Me.dgdViewAllPets)
         Me.pnlViewAllPets.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlViewAllPets.Location = New System.Drawing.Point(3, 3)
         Me.pnlViewAllPets.Name = "pnlViewAllPets"
-        Me.pnlViewAllPets.Size = New System.Drawing.Size(470, 479)
+        Me.pnlViewAllPets.Size = New System.Drawing.Size(486, 518)
         Me.pnlViewAllPets.TabIndex = 0
         '
-        'PetDataGridView
+        'dgdViewAllPets
         '
-        Me.PetDataGridView.AutoGenerateColumns = False
-        Me.PetDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.PetDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
-        Me.PetDataGridView.DataSource = Me.PetBindingSource
-        Me.PetDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PetDataGridView.Location = New System.Drawing.Point(0, 0)
-        Me.PetDataGridView.Name = "PetDataGridView"
-        Me.PetDataGridView.Size = New System.Drawing.Size(470, 479)
-        Me.PetDataGridView.TabIndex = 0
-        '
-        'OwnerLabel
-        '
-        OwnerLabel.AutoSize = True
-        OwnerLabel.Location = New System.Drawing.Point(92, 242)
-        OwnerLabel.Name = "OwnerLabel"
-        OwnerLabel.Size = New System.Drawing.Size(39, 13)
-        OwnerLabel.TabIndex = 17
-        OwnerLabel.Text = "owner:"
-        '
-        'OwnerTextBox
-        '
-        Me.OwnerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "owner", True))
-        Me.OwnerTextBox.Location = New System.Drawing.Point(165, 239)
-        Me.OwnerTextBox.Name = "OwnerTextBox"
-        Me.OwnerTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.OwnerTextBox.TabIndex = 18
-        '
-        'PetBindingSource
-        '
-        Me.PetBindingSource.DataMember = "pet"
-        Me.PetBindingSource.DataSource = Me.TickedoffDataSet
-        '
-        'TickedoffDataSet
-        '
-        Me.TickedoffDataSet.DataSetName = "tickedoffDataSet"
-        Me.TickedoffDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.dgdViewAllPets.AutoGenerateColumns = False
+        Me.dgdViewAllPets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgdViewAllPets.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.dgdViewAllPets.DataSource = Me.PetBindingSource
+        Me.dgdViewAllPets.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgdViewAllPets.Location = New System.Drawing.Point(0, 0)
+        Me.dgdViewAllPets.Name = "dgdViewAllPets"
+        Me.dgdViewAllPets.Size = New System.Drawing.Size(486, 518)
+        Me.dgdViewAllPets.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
         '
@@ -505,46 +496,29 @@ Partial Class frmPetManagement
         Me.TableAdapterManager.stateTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Ticked_Off_Vet.tickedoffDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'DisplayLabel
-        '
-        DisplayLabel.AutoSize = True
-        DisplayLabel.Location = New System.Drawing.Point(272, 334)
-        DisplayLabel.Name = "DisplayLabel"
-        DisplayLabel.Size = New System.Drawing.Size(42, 13)
-        DisplayLabel.TabIndex = 19
-        DisplayLabel.Text = "display:"
-        '
-        'DisplayComboBox
-        '
-        Me.DisplayComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PetBindingSource, "display", True))
-        Me.DisplayComboBox.DataSource = Me.PetBindingSource
-        Me.DisplayComboBox.DisplayMember = "display"
-        Me.DisplayComboBox.FormattingEnabled = True
-        Me.DisplayComboBox.Location = New System.Drawing.Point(320, 331)
-        Me.DisplayComboBox.Name = "DisplayComboBox"
-        Me.DisplayComboBox.Size = New System.Drawing.Size(121, 21)
-        Me.DisplayComboBox.TabIndex = 20
-        Me.DisplayComboBox.ValueMember = "petID"
-        '
         'frmPetManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(484, 511)
+        Me.ClientSize = New System.Drawing.Size(500, 550)
         Me.Controls.Add(Me.tabPetRecords)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmPetManagement"
         Me.Text = "Pet Management"
         Me.tabPetRecords.ResumeLayout(False)
         Me.tabPetRecord.ResumeLayout(False)
         Me.tabPetRecord.PerformLayout()
+        Me.tabPetInformation.ResumeLayout(False)
+        Me.tabPetDetails.ResumeLayout(False)
+        Me.tabPetDetails.PerformLayout()
+        CType(Me.PetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TickedoffDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PetBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PetBindingNavigator.ResumeLayout(False)
         Me.PetBindingNavigator.PerformLayout()
         Me.tabAllPets.ResumeLayout(False)
         Me.pnlViewAllPets.ResumeLayout(False)
-        CType(Me.PetDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TickedoffDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgdViewAllPets, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -557,7 +531,7 @@ Partial Class frmPetManagement
     Friend WithEvents PetBindingSource As BindingSource
     Friend WithEvents PetTableAdapter As tickedoffDataSetTableAdapters.petTableAdapter
     Friend WithEvents TableAdapterManager As tickedoffDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents PetDataGridView As DataGridView
+    Friend WithEvents dgdViewAllPets As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -566,14 +540,6 @@ Partial Class frmPetManagement
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents PetIDTextBox As TextBox
-    Friend WithEvents PetNameTextBox As TextBox
-    Friend WithEvents SpeciesTextBox As TextBox
-    Friend WithEvents BreedTextBox As TextBox
-    Friend WithEvents DOBDateTimePicker As DateTimePicker
-    Friend WithEvents GenderTextBox As TextBox
-    Friend WithEvents WeightTextBox As TextBox
-    Friend WithEvents CustomerIDTextBox As TextBox
     Friend WithEvents PetBindingNavigator As BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
@@ -587,6 +553,14 @@ Partial Class frmPetManagement
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents PetBindingNavigatorSaveItem As ToolStripButton
-    Friend WithEvents OwnerTextBox As TextBox
     Friend WithEvents DisplayComboBox As ComboBox
+    Friend WithEvents tabPetInformation As TabControl
+    Friend WithEvents tabPetDetails As TabPage
+    Friend WithEvents PetNameTextBox As TextBox
+    Friend WithEvents SpeciesTextBox As TextBox
+    Friend WithEvents BreedTextBox As TextBox
+    Friend WithEvents DOBDateTimePicker As DateTimePicker
+    Friend WithEvents GenderTextBox As TextBox
+    Friend WithEvents WeightTextBox As TextBox
+    Friend WithEvents OwnerTextBox As TextBox
 End Class
