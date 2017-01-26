@@ -379,6 +379,10 @@ Partial Public Class tickedoffDataSet
         
         Private columncustomerID As Global.System.Data.DataColumn
         
+        Private columnowner As Global.System.Data.DataColumn
+        
+        Private columndisplay As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -479,6 +483,22 @@ Partial Public Class tickedoffDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ownerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnowner
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property displayColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisplay
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -515,9 +535,9 @@ Partial Public Class tickedoffDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddpetRow(ByVal petName As String, ByVal species As String, ByVal breed As String, ByVal DOB As Date, ByVal gender As String, ByVal weight As Single, ByVal parentcustomerRowBypet_ibfk_1 As customerRow) As petRow
+        Public Overloads Function AddpetRow(ByVal petName As String, ByVal species As String, ByVal breed As String, ByVal DOB As Date, ByVal gender As String, ByVal weight As Single, ByVal parentcustomerRowBypet_ibfk_1 As customerRow, ByVal owner As String, ByVal display As String) As petRow
             Dim rowpetRow As petRow = CType(Me.NewRow,petRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, petName, species, breed, DOB, gender, weight, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Nothing, petName, species, breed, DOB, gender, weight, Nothing, owner, display}
             If (Not (parentcustomerRowBypet_ibfk_1) Is Nothing) Then
                 columnValuesArray(7) = parentcustomerRowBypet_ibfk_1(0)
             End If
@@ -557,6 +577,8 @@ Partial Public Class tickedoffDataSet
             Me.columngender = MyBase.Columns("gender")
             Me.columnweight = MyBase.Columns("weight")
             Me.columncustomerID = MyBase.Columns("customerID")
+            Me.columnowner = MyBase.Columns("owner")
+            Me.columndisplay = MyBase.Columns("display")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -578,6 +600,10 @@ Partial Public Class tickedoffDataSet
             MyBase.Columns.Add(Me.columnweight)
             Me.columncustomerID = New Global.System.Data.DataColumn("customerID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncustomerID)
+            Me.columnowner = New Global.System.Data.DataColumn("owner", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnowner)
+            Me.columndisplay = New Global.System.Data.DataColumn("display", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisplay)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnpetID}, true))
             Me.columnpetID.AutoIncrement = true
             Me.columnpetID.AutoIncrementSeed = -1
@@ -588,6 +614,9 @@ Partial Public Class tickedoffDataSet
             Me.columnspecies.MaxLength = 50
             Me.columnbreed.MaxLength = 50
             Me.columngender.MaxLength = 1
+            Me.columnowner.AllowDBNull = false
+            Me.columnowner.MaxLength = 101
+            Me.columndisplay.MaxLength = 236
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1585,6 +1614,32 @@ Partial Public Class tickedoffDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property owner() As String
+            Get
+                Return CType(Me(Me.tablepet.ownerColumn),String)
+            End Get
+            Set
+                Me(Me.tablepet.ownerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property display() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablepet.displayColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'display' in table 'pet' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablepet.displayColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property customerRow() As customerRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("pet_ibfk_1")),customerRow)
@@ -1676,6 +1731,18 @@ Partial Public Class tickedoffDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetcustomerIDNull()
             Me(Me.tablepet.customerIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsdisplayNull() As Boolean
+            Return Me.IsNull(Me.tablepet.displayColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetdisplayNull()
+            Me(Me.tablepet.displayColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -2196,6 +2263,8 @@ Namespace tickedoffDataSetTableAdapters
             tableMapping.ColumnMappings.Add("gender", "gender")
             tableMapping.ColumnMappings.Add("weight", "weight")
             tableMapping.ColumnMappings.Add("customerID", "customerID")
+            tableMapping.ColumnMappings.Add("owner", "owner")
+            tableMapping.ColumnMappings.Add("display", "display")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -2589,7 +2658,12 @@ Namespace tickedoffDataSetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT petID, petName, species, breed, DOB, gender, weight, customerID FROM pet"
+            Me._commandCollection(0).CommandText = "SELECT        pet.petID, pet.petName, pet.species, pet.breed, pet.DOB, pet.gender"& _ 
+                ", pet.weight, pet.customerID, CONCAT(customer.firstName, ' ', customer.lastName)"& _ 
+                " AS owner, CONCAT(pet.species, ': ', pet.petName, ' - ', "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    customer.firstName, ' ', customer.lastName) AS display"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            pet "& _ 
+                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         customer ON pet.customerID = customer.custo"& _ 
+                "merID"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

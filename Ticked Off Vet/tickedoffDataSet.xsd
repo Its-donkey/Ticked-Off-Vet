@@ -48,7 +48,10 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT petID, petName, species, breed, DOB, gender, weight, customerID FROM pet</CommandText>
+                    <CommandText>SELECT        pet.petID, pet.petName, pet.species, pet.breed, pet.DOB, pet.gender, pet.weight, pet.customerID, CONCAT(customer.firstName, ' ', customer.lastName) AS owner, CONCAT(pet.species, ': ', pet.petName, ' - ', 
+                         customer.firstName, ' ', customer.lastName) AS display
+FROM            pet INNER JOIN
+                         customer ON pet.customerID = customer.customerID</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -92,6 +95,8 @@
               <Mapping SourceColumn="gender" DataSetColumn="gender" />
               <Mapping SourceColumn="weight" DataSetColumn="weight" />
               <Mapping SourceColumn="customerID" DataSetColumn="customerID" />
+              <Mapping SourceColumn="owner" DataSetColumn="owner" />
+              <Mapping SourceColumn="display" DataSetColumn="display" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -263,7 +268,7 @@ FROM            customer</CommandText>
   <xs:element name="tickedoffDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="tickedoffDataSet" msprop:Generator_UserDSName="tickedoffDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="pet" msprop:Generator_TableClassName="petDataTable" msprop:Generator_TableVarName="tablepet" msprop:Generator_RowChangedName="petRowChanged" msprop:Generator_TablePropName="pet" msprop:Generator_RowDeletingName="petRowDeleting" msprop:Generator_RowChangingName="petRowChanging" msprop:Generator_RowEvHandlerName="petRowChangeEventHandler" msprop:Generator_RowDeletedName="petRowDeleted" msprop:Generator_RowClassName="petRow" msprop:Generator_UserTableName="pet" msprop:Generator_RowEvArgName="petRowChangeEvent">
+        <xs:element name="pet" msprop:Generator_TableClassName="petDataTable" msprop:Generator_TableVarName="tablepet" msprop:Generator_TablePropName="pet" msprop:Generator_RowDeletingName="petRowDeleting" msprop:Generator_RowChangingName="petRowChanging" msprop:Generator_RowEvHandlerName="petRowChangeEventHandler" msprop:Generator_RowDeletedName="petRowDeleted" msprop:Generator_UserTableName="pet" msprop:Generator_RowChangedName="petRowChanged" msprop:Generator_RowEvArgName="petRowChangeEvent" msprop:Generator_RowClassName="petRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="petID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpetID" msprop:Generator_ColumnPropNameInRow="petID" msprop:Generator_ColumnPropNameInTable="petIDColumn" msprop:Generator_UserColumnName="petID" type="xs:int" />
@@ -298,10 +303,24 @@ FROM            customer</CommandText>
               </xs:element>
               <xs:element name="weight" msprop:Generator_ColumnVarNameInTable="columnweight" msprop:Generator_ColumnPropNameInRow="weight" msprop:Generator_ColumnPropNameInTable="weightColumn" msprop:Generator_UserColumnName="weight" type="xs:float" minOccurs="0" />
               <xs:element name="customerID" msprop:Generator_ColumnVarNameInTable="columncustomerID" msprop:Generator_ColumnPropNameInRow="customerID" msprop:Generator_ColumnPropNameInTable="customerIDColumn" msprop:Generator_UserColumnName="customerID" type="xs:int" minOccurs="0" />
+              <xs:element name="owner" msprop:Generator_ColumnVarNameInTable="columnowner" msprop:Generator_ColumnPropNameInRow="owner" msprop:Generator_ColumnPropNameInTable="ownerColumn" msprop:Generator_UserColumnName="owner">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="display" msprop:Generator_ColumnVarNameInTable="columndisplay" msprop:Generator_ColumnPropNameInRow="display" msprop:Generator_ColumnPropNameInTable="displayColumn" msprop:Generator_UserColumnName="display" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="236" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="customer" msprop:Generator_TableClassName="customerDataTable" msprop:Generator_TableVarName="tablecustomer" msprop:Generator_TablePropName="customer" msprop:Generator_RowDeletingName="customerRowDeleting" msprop:Generator_RowChangingName="customerRowChanging" msprop:Generator_RowEvHandlerName="customerRowChangeEventHandler" msprop:Generator_RowDeletedName="customerRowDeleted" msprop:Generator_UserTableName="customer" msprop:Generator_RowChangedName="customerRowChanged" msprop:Generator_RowEvArgName="customerRowChangeEvent" msprop:Generator_RowClassName="customerRow">
+        <xs:element name="customer" msprop:Generator_TableClassName="customerDataTable" msprop:Generator_TableVarName="tablecustomer" msprop:Generator_RowChangedName="customerRowChanged" msprop:Generator_TablePropName="customer" msprop:Generator_RowDeletingName="customerRowDeleting" msprop:Generator_RowChangingName="customerRowChanging" msprop:Generator_RowEvHandlerName="customerRowChangeEventHandler" msprop:Generator_RowDeletedName="customerRowDeleted" msprop:Generator_RowClassName="customerRow" msprop:Generator_UserTableName="customer" msprop:Generator_RowEvArgName="customerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="customerID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncustomerID" msprop:Generator_ColumnPropNameInRow="customerID" msprop:Generator_ColumnPropNameInTable="customerIDColumn" msprop:Generator_UserColumnName="customerID" type="xs:int" />
@@ -394,7 +413,7 @@ FROM            customer</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="state" msprop:Generator_TableClassName="stateDataTable" msprop:Generator_TableVarName="tablestate" msprop:Generator_RowChangedName="stateRowChanged" msprop:Generator_TablePropName="state" msprop:Generator_RowDeletingName="stateRowDeleting" msprop:Generator_RowChangingName="stateRowChanging" msprop:Generator_RowEvHandlerName="stateRowChangeEventHandler" msprop:Generator_RowDeletedName="stateRowDeleted" msprop:Generator_RowClassName="stateRow" msprop:Generator_UserTableName="state" msprop:Generator_RowEvArgName="stateRowChangeEvent">
+        <xs:element name="state" msprop:Generator_TableClassName="stateDataTable" msprop:Generator_TableVarName="tablestate" msprop:Generator_TablePropName="state" msprop:Generator_RowDeletingName="stateRowDeleting" msprop:Generator_RowChangingName="stateRowChanging" msprop:Generator_RowEvHandlerName="stateRowChangeEventHandler" msprop:Generator_RowDeletedName="stateRowDeleted" msprop:Generator_UserTableName="state" msprop:Generator_RowChangedName="stateRowChanged" msprop:Generator_RowEvArgName="stateRowChangeEvent" msprop:Generator_RowClassName="stateRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="state" msprop:Generator_ColumnVarNameInTable="columnstate" msprop:Generator_ColumnPropNameInRow="state" msprop:Generator_ColumnPropNameInTable="stateColumn" msprop:Generator_UserColumnName="state">
@@ -424,8 +443,8 @@ FROM            customer</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="pet_ibfk_1" msdata:parent="customer" msdata:child="pet" msdata:parentkey="customerID" msdata:childkey="customerID" msprop:Generator_UserChildTable="pet" msprop:Generator_ChildPropName="GetpetRows" msprop:Generator_UserRelationName="pet_ibfk_1" msprop:Generator_RelationVarName="relationpet_ibfk_1" msprop:Generator_UserParentTable="customer" msprop:Generator_ParentPropName="customerRow" />
-      <msdata:Relationship name="customer_ibfk_1" msdata:parent="state" msdata:child="customer" msdata:parentkey="state" msdata:childkey="state" msprop:Generator_UserChildTable="customer" msprop:Generator_ChildPropName="GetcustomerRows" msprop:Generator_UserRelationName="customer_ibfk_1" msprop:Generator_ParentPropName="stateRow" msprop:Generator_RelationVarName="relationcustomer_ibfk_1" msprop:Generator_UserParentTable="state" />
+      <msdata:Relationship name="pet_ibfk_1" msdata:parent="customer" msdata:child="pet" msdata:parentkey="customerID" msdata:childkey="customerID" msprop:Generator_UserChildTable="pet" msprop:Generator_ChildPropName="GetpetRows" msprop:Generator_UserRelationName="pet_ibfk_1" msprop:Generator_ParentPropName="customerRow" msprop:Generator_RelationVarName="relationpet_ibfk_1" msprop:Generator_UserParentTable="customer" />
+      <msdata:Relationship name="customer_ibfk_1" msdata:parent="state" msdata:child="customer" msdata:parentkey="state" msdata:childkey="state" msprop:Generator_UserChildTable="customer" msprop:Generator_ChildPropName="GetcustomerRows" msprop:Generator_UserRelationName="customer_ibfk_1" msprop:Generator_RelationVarName="relationcustomer_ibfk_1" msprop:Generator_UserParentTable="state" msprop:Generator_ParentPropName="stateRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

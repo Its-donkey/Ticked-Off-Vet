@@ -29,6 +29,7 @@
         Dim selectedCell As Integer = dgdViewAllCustomers.Rows(dgdViewAllCustomers.CurrentCell.RowIndex).Cells(0).Value
 
         OpenCustomersForm(0)
+        tabCustomerInformation.SelectedIndex = 0
         CustomerBindingSource.DataMember.IndexOf(selectedCell)
     End Sub
 
